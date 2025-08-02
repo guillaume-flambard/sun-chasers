@@ -41,6 +41,22 @@
     </script>
     
     <style>
+        /* Fade-in animation for hero overlay (legacy, keep for compatibility) */
+        @keyframes fade-in {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fade-in 1.2s ease-out both;
+        }
+        /* New fadeIn animation for hero overlay (modern gradient) */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-out forwards;
+        }
         body {
             background: linear-gradient(135deg, #D2B48C 0%, #DEB887 25%, #F4A460 50%, #CD853F 75%, #D2B48C 100%);
             background-attachment: fixed;
@@ -379,41 +395,31 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative overflow-hidden py-20 px-6 hero-gradient">
-        <div class="max-w-4xl mx-auto text-center relative z-10 animate-on-scroll">
-            <!-- Floating Doodles -->
-            <div class="absolute -top-10 -left-10 text-6xl doodle-sun opacity-30">☀️</div>
-            <div class="absolute top-20 -right-8 text-4xl doodle-fruit opacity-40">🥥</div>
-            <div class="absolute -bottom-5 left-20 text-5xl doodle-fruit opacity-35">🍍</div>
-            
-            <h2 class="font-surf text-6xl md:text-8xl text-coconut-brown mb-6 drop-shadow-lg">
-                Welcome to Paradise
-            </h2>
-            <p class="font-casual text-2xl md:text-3xl text-vintage-brown/80 mb-8">
-                Where every sip feels like vacation ✨
-            </p>
-            <p class="font-handwritten text-lg md:text-xl text-vintage-brown/70 max-w-2xl mx-auto mb-12 leading-relaxed">
-                Chill vibes, fresh drinks & good food in our laid-back beach café. 
-                Perfect spot for backpackers, surfers & anyone chasing the sun! 🌴
-            </p>
-            
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#cocktails" class=" bg-coral-pink hover:bg-coral-pink/80 text-white px-8 py-4 rounded-full font-casual text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-                    🍹 Tropical Cocktails
-                </a>
-                <a href="#smoothies" class=" bg-ocean-blue hover:bg-ocean-blue/80 text-white px-8 py-4 rounded-full font-casual text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-                    🥤 Fresh Smoothies
-                </a>
-            </div>
-        </div>
-        
-        <!-- Background Elements -->
-        <div class="absolute inset-0 pointer-events-none">
-            <div class="absolute top-1/4 left-1/4 w-32 h-32 bg-pineapple/10 rounded-full blur-xl morphing-blob"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-40 h-40 bg-ocean-blue/10 rounded-full blur-xl morphing-blob" style="animation-delay: 2s;"></div>
-            <div class="absolute top-3/4 left-1/3 w-24 h-24 bg-coral-pink/10 rounded-full blur-xl morphing-blob" style="animation-delay: 4s;"></div>
-        </div>
-    </section>
+    <section class="relative h-screen w-full flex items-center justify-center bg-gradient-to-br from-[#f3d0a1] via-[#f0a561] to-[#de9654] overflow-hidden">
+  <!-- Textured photo overlay -->
+  <div class="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-soft-light"
+       style="background-image: url('/assets/background.jpg');"></div>
+
+  <!-- Gradient overlay for readability -->
+  <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+
+  <!-- Hero Content -->
+  <div class="relative z-10 text-center text-white px-6 max-w-3xl animate-fade-in">
+    <h1 class="text-5xl md:text-6xl font-extrabold drop-shadow-md">Welcome to Paradise</h1>
+    <p class="mt-4 text-xl italic font-light">Where every sip feels like vacation ✨</p>
+    <p class="mt-4 text-lg font-light">Chill vibes, fresh drinks & good food in our laid-back beach café.<br />
+      Perfect spot for backpackers, surfers & anyone chasing the sun! 🌴</p>
+
+    <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+      <button class="px-6 py-3 rounded-full bg-[#f57f4b] hover:bg-[#e96d36] text-white shadow-md transition-all duration-300">
+        🍹 Tropical Cocktails
+      </button>
+      <button class="px-6 py-3 rounded-full bg-white bg-opacity-20 backdrop-blur hover:bg-opacity-30 text-white shadow-md transition-all duration-300">
+        🥥 Fresh Smoothies
+      </button>
+    </div>
+  </div>
+</section>
 
     <!-- About Section -->
     <section class="py-16 px-6 bg-cream/50 backdrop-blur-sm">
