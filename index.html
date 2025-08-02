@@ -55,23 +55,8 @@
             width: 100%;
             height: 100%;
             background-image: 
-                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='sandNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='2' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.9 0 0 0 0 0.8 0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23sandNoise)'/%3E%3C/svg%3E");
-            opacity: 0.08;
-            mix-blend-mode: multiply;
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='fineGrain'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.4' numOctaves='1' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.98 0 0 0 0 0.95 0 0 0 0 0.85 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fineGrain)'/%3E%3C/svg%3E");
-            opacity: 0.05;
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='discreteGrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' seed='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23discreteGrain)'/%3E%3C/svg%3E");
+            opacity: 0.015;
             mix-blend-mode: overlay;
             pointer-events: none;
             z-index: 0;
@@ -118,42 +103,8 @@
             pointer-events: none;
         }
         
-        .sand-texture {
+        .discrete-grain {
             position: relative;
-            filter: contrast(1.05) brightness(1.02);
-        }
-        
-        .sand-texture::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 25% 25%, rgba(139, 69, 19, 0.008) 0.5px, transparent 0.5px),
-                radial-gradient(circle at 75% 75%, rgba(160, 82, 45, 0.006) 0.3px, transparent 0.3px),
-                radial-gradient(circle at 50% 10%, rgba(139, 69, 19, 0.005) 0.4px, transparent 0.4px),
-                radial-gradient(circle at 20% 80%, rgba(160, 82, 45, 0.007) 0.6px, transparent 0.6px);
-            background-size: 8px 8px, 12px 12px, 6px 6px, 10px 10px;
-            background-position: 0 0, 3px 3px, 6px 1px, 1px 6px;
-            pointer-events: none;
-            z-index: 1;
-        }
-        
-        .sand-texture > * {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .sand-granules {
-            background: 
-                radial-gradient(circle at 15% 85%, rgba(139, 69, 19, 0.02) 0.3px, transparent 0.3px),
-                radial-gradient(circle at 85% 15%, rgba(160, 82, 45, 0.015) 0.2px, transparent 0.2px),
-                radial-gradient(circle at 35% 65%, rgba(139, 69, 19, 0.01) 0.25px, transparent 0.25px),
-                radial-gradient(circle at 65% 35%, rgba(160, 82, 45, 0.018) 0.4px, transparent 0.4px);
-            background-size: 16px 16px, 20px 20px, 12px 12px, 18px 18px;
-            background-position: 0 0, 5px 5px, 8px 2px, 2px 8px;
         }
         
         .doodle-sun {
@@ -178,12 +129,12 @@
             border-image: url("data:image/svg+xml,%3csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='m5,5 l90,0 l0,90 l-90,0 z' fill='none' stroke='%23A16207' stroke-width='2' stroke-dasharray='3,2'/%3e%3c/svg%3e") 30;
         }
         
-        .sand-card {
+        .bg-white/80 {
             position: relative;
             background: rgba(255, 255, 255, 0.8);
         }
         
-        .sand-card::before {
+        .bg-white/80::before {
             content: '';
             position: absolute;
             top: 0;
@@ -205,17 +156,17 @@
             z-index: 1;
         }
         
-        .sand-card > * {
+        .bg-white/80 > * {
             position: relative;
             z-index: 2;
         }
         
-        .sand-button {
+        . {
             position: relative;
             overflow: hidden;
         }
         
-        .sand-button::after {
+        .::after {
             content: '';
             position: absolute;
             top: 0;
@@ -232,7 +183,7 @@
     </style>
 </head>
 
-<body class="font-handwritten text-vintage-brown sand-noise sand-granules min-h-screen relative">
+<body class="font-handwritten text-vintage-brown discrete-grain min-h-screen relative">
     <!-- Header -->
     <header class="sticky top-0 z-50 bg-cream/90 backdrop-blur-md border-b-2 border-coconut-brown/20 relative">
         <nav class="max-w-6xl mx-auto px-6 py-4">
@@ -265,7 +216,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative overflow-hidden py-20 px-6 sand-texture">
+    <section class="relative overflow-hidden py-20 px-6 ">
         <div class="max-w-4xl mx-auto text-center relative z-10">
             <!-- Floating Doodles -->
             <div class="absolute -top-10 -left-10 text-6xl doodle-sun opacity-30">☀️</div>
@@ -284,10 +235,10 @@
             </p>
             
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="#cocktails" class="sand-button bg-coral-pink hover:bg-coral-pink/80 text-white px-8 py-4 rounded-full font-casual text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                <a href="#cocktails" class=" bg-coral-pink hover:bg-coral-pink/80 text-white px-8 py-4 rounded-full font-casual text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
                     🍹 Tropical Cocktails
                 </a>
-                <a href="#smoothies" class="sand-button bg-ocean-blue hover:bg-ocean-blue/80 text-white px-8 py-4 rounded-full font-casual text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                <a href="#smoothies" class=" bg-ocean-blue hover:bg-ocean-blue/80 text-white px-8 py-4 rounded-full font-casual text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
                     🥤 Fresh Smoothies
                 </a>
             </div>
@@ -302,11 +253,11 @@
     </section>
 
     <!-- About Section -->
-    <section class="py-16 px-6 bg-cream/50 backdrop-blur-sm sand-texture">
+    <section class="py-16 px-6 bg-cream/50 backdrop-blur-sm ">
         <div class="max-w-5xl mx-auto">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="relative">
-                    <div class="sand-card p-8 rounded-3xl shadow-xl border-2 border-coconut-brown/20">
+                    <div class="bg-white/80 p-8 rounded-3xl shadow-xl border-2 border-coconut-brown/20">
                         <h3 class="font-surf text-4xl text-coconut-brown mb-6">Our Vibe 🌊</h3>
                         <p class="font-handwritten text-lg text-vintage-brown leading-relaxed mb-4">
                             Located on beautiful Thong Sai Road in Ban Tai, we're your go-to spot for 
@@ -406,7 +357,7 @@
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Cocktail Cards -->
-                <div class="sand-card backdrop-blur-sm p-6 rounded-3xl shadow-lg border-2 border-coral-pink/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="bg-white/80 backdrop-blur-sm p-6 rounded-3xl shadow-lg border-2 border-coral-pink/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                     <div class="text-center mb-4">
                         <div class="text-4xl mb-2">🍹</div>
                         <h3 class="font-surf text-2xl text-coconut-brown">Tropical Paradise</h3>
@@ -419,7 +370,7 @@
                     </div>
                 </div>
                 
-                <div class="sand-card backdrop-blur-sm p-6 rounded-3xl shadow-lg border-2 border-ocean-blue/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="bg-white/80 backdrop-blur-sm p-6 rounded-3xl shadow-lg border-2 border-ocean-blue/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                     <div class="text-center mb-4">
                         <div class="text-4xl mb-2">🥥</div>
                         <h3 class="font-surf text-2xl text-coconut-brown">Coconut Mojito</h3>
@@ -432,7 +383,7 @@
                     </div>
                 </div>
                 
-                <div class="sand-card backdrop-blur-sm p-6 rounded-3xl shadow-lg border-2 border-pineapple/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="bg-white/80 backdrop-blur-sm p-6 rounded-3xl shadow-lg border-2 border-pineapple/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                     <div class="text-center mb-4">
                         <div class="text-4xl mb-2">🌅</div>
                         <h3 class="font-surf text-2xl text-coconut-brown">Sunset Punch</h3>
@@ -504,7 +455,7 @@
     </section>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="py-20 px-6 bg-gradient-to-br from-cream/80 to-sandy-beige/60 sand-texture sand-granules">
+    <section id="gallery" class="py-20 px-6 bg-gradient-to-br from-cream/80 to-sandy-beige/60  ">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16 relative">
                 <div class="absolute -top-5 left-1/4 text-4xl doodle-fruit opacity-40">📸</div>
@@ -520,7 +471,7 @@
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Featured Gallery Items with Product Photos -->
-                <div class="group relative sand-card backdrop-blur-sm rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3">
+                <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3">
                     <div class="aspect-square overflow-hidden">
                         <img src="assets/products/caramel.jpg" alt="Caramel Macchiato at Sun Chasers' Cafe" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     </div>
@@ -531,7 +482,7 @@
                     </div>
                 </div>
                 
-                <div class="group relative sand-card backdrop-blur-sm rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3">
+                <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3">
                     <div class="aspect-square overflow-hidden">
                         <img src="assets/products/late.jpg" alt="Iced Latte at Sun Chasers' Cafe" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     </div>
@@ -542,7 +493,7 @@
                     </div>
                 </div>
                 
-                <div class="group relative sand-card backdrop-blur-sm rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3">
+                <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3">
                     <div class="aspect-square overflow-hidden">
                         <img src="assets/products/lemon.jpg" alt="Honey Lemon Tea at Sun Chasers' Cafe" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     </div>
@@ -595,7 +546,7 @@
     </section>
 
     <!-- Breakfast Section -->
-    <section id="breakfast" class="py-20 px-6 sand-texture">
+    <section id="breakfast" class="py-20 px-6 ">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16 relative">
                 <div class="absolute -top-5 left-1/4 text-4xl doodle-fruit opacity-40">🥞</div>
@@ -672,7 +623,7 @@
     </section>
 
     <!-- Coffee Section -->
-    <section id="coffee" class="py-20 px-6 bg-cream/30 sand-texture sand-granules">
+    <section id="coffee" class="py-20 px-6 bg-cream/30  ">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16 relative">
                 <div class="absolute -top-5 left-1/3 text-4xl doodle-sun opacity-40">☕</div>
@@ -779,7 +730,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-coconut-brown/90 text-cream py-12 sand-texture">
+    <footer class="bg-coconut-brown/90 text-cream py-12 ">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <div class="flex justify-center items-center gap-4 mb-6">
                 <img src="assets/logo.jpg" alt="Sun Chasers' Cafe Logo" class="w-12 h-12 opacity-90 rounded-lg">
