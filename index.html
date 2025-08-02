@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunchasers - Tropical Beach Café | Koh Pha-Ngan</title>
+    <meta name="description" content="Laid-back tropical beach café serving fresh cocktails, smoothies, breakfast & coffee in paradise. Backpacker-friendly vibes on Koh Pha-Ngan.">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Caveat:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'handwritten': ['Kalam', 'cursive'],
+                        'casual': ['Caveat', 'cursive'],
+                        'surf': ['Pacifico', 'cursive'],
+                    },
+                    colors: {
+                        'pineapple': '#FBBF24',
+                        'ocean-blue': '#38BDF8',
+                        'coral-pink': '#FB7185',
+                        'coconut-brown': '#A16207',
+                        'sandy-beige': '#F5E6D3',
+                        'surf-teal': '#14B8A6',
+                        'sunset-orange': '#FB923C',
+                        'palm-green': '#22C55E',
+                        'cream': '#FEF7ED',
+                        'vintage-brown': '#92400E',
+                    },
+                    backgroundImage: {
+                        'sandy-texture': "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23F5E6D3' fill-opacity='0.4'%3E%3Ccircle cx='2' cy='2' r='1'/%3E%3Ccircle cx='12' cy='8' r='1'/%3E%3Ccircle cx='22' cy='4' r='1'/%3E%3Ccircle cx='32' cy='12' r='1'/%3E%3Ccircle cx='42' cy='2' r='1'/%3E%3Ccircle cx='52' cy='10' r='1'/%3E%3Ccircle cx='8' cy='18' r='1'/%3E%3Ccircle cx='18' cy='22' r='1'/%3E%3Ccircle cx='28' cy='16' r='1'/%3E%3Ccircle cx='38' cy='24' r='1'/%3E%3Ccircle cx='48' cy='20' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background: linear-gradient(135deg, #FEF7ED 0%, #F5E6D3 100%);
+            background-attachment: fixed;
+        }
+        
+        .grainy {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(251, 191, 36, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 100%, rgba(251, 113, 133, 0.1) 0%, transparent 50%);
+        }
+        
+        .doodle-sun {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .doodle-fruit {
+            animation: bounce 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        .handdrawn-border {
+            border-image: url("data:image/svg+xml,%3csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='m5,5 l90,0 l0,90 l-90,0 z' fill='none' stroke='%23A16207' stroke-width='2' stroke-dasharray='3,2'/%3e%3c/svg%3e") 30;
+        }
+    </style>
+</head>
+
+<body class="font-handwritten text-vintage-brown grainy min-h-screen bg-sandy-texture">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-cream/90 backdrop-blur-md border-b-2 border-coconut-brown/20">
+        <nav class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <img src="assets/logo.png" alt="Sunchasers Logo" class="w-12 h-12 doodle-sun">
+                    <div>
+                        <h1 class="font-surf text-3xl text-coconut-brown">Sunchasers</h1>
+                        <p class="font-casual text-sm text-vintage-brown/70">Beach Café</p>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#cocktails" class="font-casual text-lg hover:text-coral-pink transition-colors duration-300">🍹 Cocktails</a>
+                    <a href="#smoothies" class="font-casual text-lg hover:text-ocean-blue transition-colors duration-300">🥤 Smoothies</a>
+                    <a href="#breakfast" class="font-casual text-lg hover:text-pineapple transition-colors duration-300">🥞 Breakfast</a>
+                    <a href="#coffee" class="font-casual text-lg hover:text-coconut-brown transition-colors duration-300">☕ Coffee</a>
+                </div>
+                
+                <button class="md:hidden p-2">
+                    <div class="w-6 h-6 flex flex-col gap-1">
+                        <div class="w-full h-0.5 bg-coconut-brown rounded"></div>
+                        <div class="w-full h-0.5 bg-coconut-brown rounded"></div>
+                        <div class="w-full h-0.5 bg-coconut-brown rounded"></div>
+                    </div>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden py-20 px-6">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <!-- Floating Doodles -->
+            <div class="absolute -top-10 -left-10 text-6xl doodle-sun opacity-30">☀️</div>
+            <div class="absolute top-20 -right-8 text-4xl doodle-fruit opacity-40">🥥</div>
+            <div class="absolute -bottom-5 left-20 text-5xl doodle-fruit opacity-35">🍍</div>
+            
+            <h2 class="font-surf text-6xl md:text-8xl text-coconut-brown mb-6 drop-shadow-lg">
+                Welcome to Paradise
+            </h2>
+            <p class="font-casual text-2xl md:text-3xl text-vintage-brown/80 mb-8">
+                Where every sip feels like vacation ✨
+            </p>
+            <p class="font-handwritten text-lg md:text-xl text-vintage-brown/70 max-w-2xl mx-auto mb-12 leading-relaxed">
+                Chill vibes, fresh drinks & good food in our laid-back beach café. 
+                Perfect spot for backpackers, surfers & anyone chasing the sun! 🌴
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#cocktails" class="bg-coral-pink hover:bg-coral-pink/80 text-white px-8 py-4 rounded-full font-casual text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                    🍹 Tropical Cocktails
+                </a>
+                <a href="#smoothies" class="bg-ocean-blue hover:bg-ocean-blue/80 text-white px-8 py-4 rounded-full font-casual text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                    🥤 Fresh Smoothies
+                </a>
+            </div>
+        </div>
+        
+        <!-- Background Elements -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-1/4 left-1/4 w-32 h-32 bg-pineapple/10 rounded-full blur-xl"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-40 h-40 bg-ocean-blue/10 rounded-full blur-xl"></div>
+            <div class="absolute top-3/4 left-1/3 w-24 h-24 bg-coral-pink/10 rounded-full blur-xl"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-16 px-6 bg-cream/50 backdrop-blur-sm">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="bg-white/70 p-8 rounded-3xl shadow-xl border-2 border-coconut-brown/20">
+                        <h3 class="font-surf text-4xl text-coconut-brown mb-6">Our Vibe 🌊</h3>
+                        <p class="font-handwritten text-lg text-vintage-brown leading-relaxed mb-4">
+                            Located on beautiful Thong Sai Road in Ban Tai, we're your go-to spot for 
+                            amazing coffee, fresh smoothies, and chill island vibes.
+                        </p>
+                        <p class="font-handwritten text-lg text-vintage-brown leading-relaxed">
+                            Whether you're starting your day with breakfast, cooling down with a smoothie, 
+                            or watching the sunset with a cocktail - we've got you covered! 🌅
+                        </p>
+                        
+                        <div class="mt-6 space-y-3">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">🏄‍♂️</span>
+                                <span class="font-casual text-lg">Surfer & Backpacker Friendly</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">🌱</span>
+                                <span class="font-casual text-lg">Fresh Local Ingredients</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">🌴</span>
+                                <span class="font-casual text-lg">Chill Beach Atmosphere</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Doodle elements around the box -->
+                    <div class="absolute -top-3 -right-3 text-3xl doodle-fruit">🥭</div>
+                    <div class="absolute -bottom-3 -left-3 text-3xl doodle-sun">🌺</div>
+                </div>
+                
+                <div class="relative">
+                    <div class="bg-gradient-to-br from-ocean-blue/20 to-surf-teal/20 p-8 rounded-3xl">
+                        <h4 class="font-surf text-3xl text-coconut-brown mb-4">Come Hang With Us! 📍</h4>
+                        <div class="space-y-4 font-handwritten text-lg">
+                            <p class="flex items-start gap-2">
+                                <span class="text-xl">📍</span>
+                                <span>M3H6+2MF Thong Sai Rd Ban Tai, Koh Pha-Ngan</span>
+                            </p>
+                            <p class="flex items-center gap-2">
+                                <span class="text-xl">📞</span>
+                                <span>+66 81 319 3879</span>
+                            </p>
+                            <p class="flex items-center gap-2">
+                                <span class="text-xl">⏰</span>
+                                <span>Daily 6AM - 10PM</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cocktails Section -->
+    <section id="cocktails" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 relative">
+                <div class="absolute -top-5 left-1/4 text-4xl doodle-fruit opacity-40">🍹</div>
+                <div class="absolute -top-3 right-1/4 text-3xl doodle-fruit opacity-40">🥥</div>
+                
+                <h2 class="font-surf text-5xl md:text-6xl text-coconut-brown mb-4">
+                    Tropical Cocktails
+                </h2>
+                <p class="font-casual text-2xl text-vintage-brown/70">
+                    Sunset-worthy sips & island vibes 🌅
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Cocktail Cards -->
+                <div class="bg-white/80 backdrop-blur-sm p-6 rounded-3xl shadow-lg border-2 border-coral-pink/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="text-center mb-4">
+                        <div class="text-4xl mb-2">🍹</div>
+                        <h3 class="font-surf text-2xl text-coconut-brown">Tropical Paradise</h3>
+                    </div>
+                    <p class="font-handwritten text-vintage-brown/80 text-center mb-4">
+                        Rum, pineapple, coconut & lime - pure island magic!
+                    </p>
+                    <div class="text-center">
+                        <span class="font-casual text-2xl text-coral-pink font-bold">280฿</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white/80 backdrop-blur-sm p-6 rounded-3xl shadow-lg border-2 border-ocean-blue/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="text-center mb-4">
+                        <div class="text-4xl mb-2">🥥</div>
+                        <h3 class="font-surf text-2xl text-coconut-brown">Coconut Mojito</h3>
+                    </div>
+                    <p class="font-handwritten text-vintage-brown/80 text-center mb-4">
+                        Fresh mint, lime, coconut water & white rum
+                    </p>
+                    <div class="text-center">
+                        <span class="font-casual text-2xl text-ocean-blue font-bold">260฿</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white/80 backdrop-blur-sm p-6 rounded-3xl shadow-lg border-2 border-pineapple/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="text-center mb-4">
+                        <div class="text-4xl mb-2">🌅</div>
+                        <h3 class="font-surf text-2xl text-coconut-brown">Sunset Punch</h3>
+                    </div>
+                    <p class="font-handwritten text-vintage-brown/80 text-center mb-4">
+                        Passion fruit, mango, vodka & a splash of sunshine
+                    </p>
+                    <div class="text-center">
+                        <span class="font-casual text-2xl text-sunset-orange font-bold">300฿</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smoothies Section -->
+    <section id="smoothies" class="py-20 px-6 bg-cream/30">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 relative">
+                <div class="absolute -top-5 left-1/3 text-4xl doodle-fruit opacity-40">🥤</div>
+                <div class="absolute -top-3 right-1/3 text-3xl doodle-fruit opacity-40">🍓</div>
+                
+                <h2 class="font-surf text-5xl md:text-6xl text-coconut-brown mb-4">
+                    Fresh Smoothies
+                </h2>
+                <p class="font-casual text-2xl text-vintage-brown/70">
+                    Tropical fruits blended to perfection 🌿
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-gradient-to-br from-pineapple/20 to-sunset-orange/20 p-6 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="text-center">
+                        <div class="text-3xl mb-3">🍍</div>
+                        <h3 class="font-surf text-xl text-coconut-brown mb-2">Pineapple Power</h3>
+                        <p class="font-handwritten text-sm text-vintage-brown/80 mb-3">Fresh pineapple & coconut</p>
+                        <span class="font-casual text-xl text-pineapple font-bold">80฿</span>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-coral-pink/20 to-sunset-orange/20 p-6 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="text-center">
+                        <div class="text-3xl mb-3">🍓</div>
+                        <h3 class="font-surf text-xl text-coconut-brown mb-2">Berry Bliss</h3>
+                        <p class="font-handwritten text-sm text-vintage-brown/80 mb-3">Strawberry & pineapple</p>
+                        <span class="font-casual text-xl text-coral-pink font-bold">90฿</span>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-sunset-orange/20 to-pineapple/20 p-6 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="text-center">
+                        <div class="text-3xl mb-3">🥭</div>
+                        <h3 class="font-surf text-xl text-coconut-brown mb-2">Mango Magic</h3>
+                        <p class="font-handwritten text-sm text-vintage-brown/80 mb-3">Fresh mango smoothie</p>
+                        <span class="font-casual text-xl text-sunset-orange font-bold">100฿</span>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-ocean-blue/20 to-surf-teal/20 p-6 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="text-center">
+                        <div class="text-3xl mb-3">🌊</div>
+                        <h3 class="font-surf text-xl text-coconut-brown mb-2">Ocean Bowl</h3>
+                        <p class="font-handwritten text-sm text-vintage-brown/80 mb-3">Acai bowl with fruits</p>
+                        <span class="font-casual text-xl text-ocean-blue font-bold">180฿</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breakfast Section -->
+    <section id="breakfast" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 relative">
+                <div class="absolute -top-5 left-1/4 text-4xl doodle-fruit opacity-40">🥞</div>
+                <div class="absolute -top-3 right-1/4 text-3xl doodle-fruit opacity-40">🍳</div>
+                
+                <h2 class="font-surf text-5xl md:text-6xl text-coconut-brown mb-4">
+                    Breakfast & Brunch
+                </h2>
+                <p class="font-casual text-2xl text-vintage-brown/70">
+                    Start your day the island way 🌺
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white/70 p-8 rounded-3xl shadow-lg border-2 border-pineapple/30">
+                    <h3 class="font-surf text-3xl text-coconut-brown mb-6 text-center">🍳 Hearty Plates</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-4 bg-cream/50 rounded-2xl">
+                            <div>
+                                <h4 class="font-casual text-lg text-coconut-brown">Eggs, Bacon & Toast</h4>
+                                <p class="font-handwritten text-sm text-vintage-brown/70">Classic breakfast done right</p>
+                            </div>
+                            <span class="font-casual text-xl text-pineapple font-bold">180฿</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center p-4 bg-cream/50 rounded-2xl">
+                            <div>
+                                <h4 class="font-casual text-lg text-coconut-brown">Tropical Omelette</h4>
+                                <p class="font-handwritten text-sm text-vintage-brown/70">Fluffy eggs with local flavors</p>
+                            </div>
+                            <span class="font-casual text-xl text-pineapple font-bold">150฿</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center p-4 bg-cream/50 rounded-2xl">
+                            <div>
+                                <h4 class="font-casual text-lg text-coconut-brown">Muesli & Yogurt</h4>
+                                <p class="font-handwritten text-sm text-vintage-brown/70">Fresh granola & creamy yogurt</p>
+                            </div>
+                            <span class="font-casual text-xl text-pineapple font-bold">160฿</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white/70 p-8 rounded-3xl shadow-lg border-2 border-coral-pink/30">
+                    <h3 class="font-surf text-3xl text-coconut-brown mb-6 text-center">🥞 Sweet Treats</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-4 bg-cream/50 rounded-2xl">
+                            <div>
+                                <h4 class="font-casual text-lg text-coconut-brown">French Toast & Bacon</h4>
+                                <p class="font-handwritten text-sm text-vintage-brown/70">Golden & crispy perfection</p>
+                            </div>
+                            <span class="font-casual text-xl text-coral-pink font-bold">110฿</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center p-4 bg-cream/50 rounded-2xl">
+                            <div>
+                                <h4 class="font-casual text-lg text-coconut-brown">Waffle & Ice Cream</h4>
+                                <p class="font-handwritten text-sm text-vintage-brown/70">Crispy waffle with vanilla ice cream</p>
+                            </div>
+                            <span class="font-casual text-xl text-coral-pink font-bold">130฿</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center p-4 bg-cream/50 rounded-2xl">
+                            <div>
+                                <h4 class="font-casual text-lg text-coconut-brown">Croissant & Bacon</h4>
+                                <p class="font-handwritten text-sm text-vintage-brown/70">Buttery croissant with crispy bacon</p>
+                            </div>
+                            <span class="font-casual text-xl text-coral-pink font-bold">80฿</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coffee Section -->
+    <section id="coffee" class="py-20 px-6 bg-cream/30">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 relative">
+                <div class="absolute -top-5 left-1/3 text-4xl doodle-sun opacity-40">☕</div>
+                <div class="absolute -top-3 right-1/3 text-3xl doodle-fruit opacity-40">🫘</div>
+                
+                <h2 class="font-surf text-5xl md:text-6xl text-coconut-brown mb-4">
+                    Coffee & More
+                </h2>
+                <p class="font-casual text-2xl text-vintage-brown/70">
+                    Fuel your island adventures ⚡
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Coffee -->
+                <div class="bg-gradient-to-br from-coconut-brown/10 to-vintage-brown/10 p-8 rounded-3xl shadow-lg">
+                    <h3 class="font-surf text-3xl text-coconut-brown mb-6 text-center">☕ Coffee Vibes</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center p-4 bg-white/50 rounded-2xl">
+                            <h4 class="font-casual text-lg text-coconut-brown">Espresso</h4>
+                            <p class="font-handwritten text-xs text-vintage-brown/70">Strong & bold</p>
+                            <span class="font-casual text-lg text-coconut-brown font-bold">60/80฿</span>
+                        </div>
+                        <div class="text-center p-4 bg-white/50 rounded-2xl">
+                            <h4 class="font-casual text-lg text-coconut-brown">Latte</h4>
+                            <p class="font-handwritten text-xs text-vintage-brown/70">Smooth & creamy</p>
+                            <span class="font-casual text-lg text-coconut-brown font-bold">110฿</span>
+                        </div>
+                        <div class="text-center p-4 bg-white/50 rounded-2xl">
+                            <h4 class="font-casual text-lg text-coconut-brown">Cappuccino</h4>
+                            <p class="font-handwritten text-xs text-vintage-brown/70">Foamy perfection</p>
+                            <span class="font-casual text-lg text-coconut-brown font-bold">100฿</span>
+                        </div>
+                        <div class="text-center p-4 bg-white/50 rounded-2xl">
+                            <h4 class="font-casual text-lg text-coconut-brown">Cold Brew</h4>
+                            <p class="font-handwritten text-xs text-vintage-brown/70">Chill & smooth</p>
+                            <span class="font-casual text-lg text-coconut-brown font-bold">100฿</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Non-Coffee -->
+                <div class="bg-gradient-to-br from-ocean-blue/10 to-surf-teal/10 p-8 rounded-3xl shadow-lg">
+                    <h3 class="font-surf text-3xl text-coconut-brown mb-6 text-center">🥤 Chill Drinks</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-4 bg-white/50 rounded-2xl">
+                            <div>
+                                <h4 class="font-casual text-lg text-coconut-brown">Fresh Orange Juice</h4>
+                                <p class="font-handwritten text-sm text-vintage-brown/70">Squeezed daily</p>
+                            </div>
+                            <span class="font-casual text-xl text-ocean-blue font-bold">90฿</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center p-4 bg-white/50 rounded-2xl">
+                            <div>
+                                <h4 class="font-casual text-lg text-coconut-brown">Iced Coffee</h4>
+                                <p class="font-handwritten text-sm text-vintage-brown/70">Perfect for hot days</p>
+                            </div>
+                            <span class="font-casual text-xl text-ocean-blue font-bold">80฿</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center p-4 bg-white/50 rounded-2xl">
+                            <div>
+                                <h4 class="font-casual text-lg text-coconut-brown">Dirty Chai</h4>
+                                <p class="font-handwritten text-sm text-vintage-brown/70">Spiced chai with espresso</p>
+                            </div>
+                            <span class="font-casual text-xl text-ocean-blue font-bold">130฿</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-coconut-brown/90 text-cream py-12">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="flex justify-center items-center gap-4 mb-6">
+                <img src="assets/logo.png" alt="Sunchasers Logo" class="w-12 h-12 opacity-90">
+                <div>
+                    <h3 class="font-surf text-3xl">Sunchasers</h3>
+                    <p class="font-casual text-lg opacity-80">Beach Café Paradise</p>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h4 class="font-casual text-xl mb-3">📍 Find Us</h4>
+                    <p class="font-handwritten opacity-80">M3H6+2MF Thong Sai Rd Ban Tai</p>
+                    <p class="font-handwritten opacity-80">Koh Pha-Ngan, Thailand</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-casual text-xl mb-3">📞 Call Us</h4>
+                    <p class="font-handwritten opacity-80">+66 81 319 3879</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-casual text-xl mb-3">⏰ Hours</h4>
+                    <p class="font-handwritten opacity-80">Daily 6AM - 10PM</p>
+                    <p class="font-handwritten text-sm opacity-70">Perfect for sunrise & sunset! 🌅</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-cream/20 pt-6">
+                <p class="font-handwritten opacity-70">
+                    Made with ❤️ and lots of ☕ • Come chase the sun with us! 🌴
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
