@@ -55,11 +55,45 @@
             width: 100%;
             height: 100%;
             background-image: 
-                url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='discreteGrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' seed='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23discreteGrain)'/%3E%3C/svg%3E");
-            opacity: 0.015;
-            mix-blend-mode: overlay;
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='retro-film-grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' seed='42' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0.2 0.3 0.7 0 0 0.4 0.5 0.3 0 0 0.6 0.2 0.8 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23retro-film-grain)' opacity='0.12'/%3E%3C/svg%3E");
+            background-size: 512px 512px;
+            background-repeat: repeat;
+            opacity: 0.3;
+            mix-blend-mode: soft-light;
             pointer-events: none;
             z-index: 0;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 8% 12%, rgba(56, 189, 248, 0.04) 0.2px, transparent 0.2px),
+                radial-gradient(circle at 23% 8%, rgba(156, 163, 175, 0.035) 0.15px, transparent 0.15px),
+                radial-gradient(circle at 45% 25%, rgba(168, 85, 247, 0.03) 0.25px, transparent 0.25px),
+                radial-gradient(circle at 67% 15%, rgba(236, 72, 153, 0.025) 0.18px, transparent 0.18px),
+                radial-gradient(circle at 89% 35%, rgba(56, 189, 248, 0.038) 0.22px, transparent 0.22px),
+                radial-gradient(circle at 12% 45%, rgba(156, 163, 175, 0.032) 0.16px, transparent 0.16px),
+                radial-gradient(circle at 34% 62%, rgba(168, 85, 247, 0.028) 0.24px, transparent 0.24px),
+                radial-gradient(circle at 56% 78%, rgba(236, 72, 153, 0.033) 0.19px, transparent 0.19px),
+                radial-gradient(circle at 78% 88%, rgba(56, 189, 248, 0.026) 0.21px, transparent 0.21px),
+                radial-gradient(circle at 91% 65%, rgba(156, 163, 175, 0.029) 0.17px, transparent 0.17px),
+                radial-gradient(circle at 15% 85%, rgba(168, 85, 247, 0.031) 0.23px, transparent 0.23px),
+                radial-gradient(circle at 38% 92%, rgba(236, 72, 153, 0.027) 0.2px, transparent 0.2px);
+            background-size: 
+                32px 32px, 28px 28px, 36px 36px, 24px 24px, 40px 40px,
+                26px 26px, 34px 34px, 30px 30px, 38px 38px, 22px 22px,
+                42px 42px, 20px 20px;
+            background-position: 
+                0 0, 8px 4px, 16px 12px, 24px 8px, 32px 20px,
+                4px 24px, 12px 32px, 20px 16px, 28px 28px, 36px 6px,
+                6px 36px, 14px 40px;
+            pointer-events: none;
+            z-index: 1;
         }
         
         .grainy {
@@ -103,7 +137,7 @@
             pointer-events: none;
         }
         
-        .discrete-grain {
+        .natural-sand {
             position: relative;
         }
         
@@ -129,12 +163,12 @@
             border-image: url("data:image/svg+xml,%3csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='m5,5 l90,0 l0,90 l-90,0 z' fill='none' stroke='%23A16207' stroke-width='2' stroke-dasharray='3,2'/%3e%3c/svg%3e") 30;
         }
         
-        .bg-white/80 {
+        .bg-white-80 {
             position: relative;
             background: rgba(255, 255, 255, 0.8);
         }
         
-        .bg-white/80::before {
+        .bg-white-80::before {
             content: '';
             position: absolute;
             top: 0;
@@ -156,34 +190,14 @@
             z-index: 1;
         }
         
-        .bg-white/80 > * {
+        .bg-white-80 > * {
             position: relative;
             z-index: 2;
-        }
-        
-        . {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(circle at 25% 75%, rgba(255, 255, 255, 0.2) 0.5px, transparent 0.5px),
-                radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.15) 0.3px, transparent 0.3px);
-            background-size: 15px 15px, 12px 12px;
-            border-radius: inherit;
-            pointer-events: none;
         }
     </style>
 </head>
 
-<body class="font-handwritten text-vintage-brown discrete-grain min-h-screen relative">
+<body class="font-handwritten text-vintage-brown natural-sand min-h-screen relative">
     <!-- Header -->
     <header class="sticky top-0 z-50 bg-cream/90 backdrop-blur-md border-b-2 border-coconut-brown/20 relative">
         <nav class="max-w-6xl mx-auto px-6 py-4">
@@ -204,13 +218,24 @@
                     <a href="#coffee" class="font-casual text-lg hover:text-coconut-brown transition-colors duration-300">☕ Coffee</a>
                 </div>
                 
-                <button class="md:hidden p-2">
+                <button class="md:hidden p-2 hamburger">
                     <div class="w-6 h-6 flex flex-col gap-1">
-                        <div class="w-full h-0.5 bg-coconut-brown rounded"></div>
-                        <div class="w-full h-0.5 bg-coconut-brown rounded"></div>
-                        <div class="w-full h-0.5 bg-coconut-brown rounded"></div>
+                        <span class="w-full h-0.5 bg-coconut-brown rounded transition-all duration-300"></span>
+                        <span class="w-full h-0.5 bg-coconut-brown rounded transition-all duration-300"></span>
+                        <span class="w-full h-0.5 bg-coconut-brown rounded transition-all duration-300"></span>
                     </div>
                 </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="mobile-menu hidden md:hidden absolute top-full left-0 right-0 bg-cream/95 backdrop-blur-md border-b-2 border-coconut-brown/20 shadow-lg">
+                <div class="flex flex-col gap-4 p-6">
+                    <a href="#cocktails" class="font-casual text-lg hover:text-coral-pink transition-colors duration-300">🍹 Cocktails</a>
+                    <a href="#smoothies" class="font-casual text-lg hover:text-ocean-blue transition-colors duration-300">🥤 Smoothies</a>
+                    <a href="#gallery" class="font-casual text-lg hover:text-pineapple transition-colors duration-300">📸 Gallery</a>
+                    <a href="#breakfast" class="font-casual text-lg hover:text-sunset-orange transition-colors duration-300">🥞 Breakfast</a>
+                    <a href="#coffee" class="font-casual text-lg hover:text-coconut-brown transition-colors duration-300">☕ Coffee</a>
+                </div>
             </div>
         </nav>
     </header>
@@ -257,7 +282,7 @@
         <div class="max-w-5xl mx-auto">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="relative">
-                    <div class="bg-white/80 p-8 rounded-3xl shadow-xl border-2 border-coconut-brown/20">
+                    <div class="bg-white-80 p-8 rounded-3xl shadow-xl border-2 border-coconut-brown/20">
                         <h3 class="font-surf text-4xl text-coconut-brown mb-6">Our Vibe 🌊</h3>
                         <p class="font-handwritten text-lg text-vintage-brown leading-relaxed mb-4">
                             Located on beautiful Thong Sai Road in Ban Tai, we're your go-to spot for 
@@ -357,7 +382,7 @@
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Cocktail Cards -->
-                <div class="bg-white/80 backdrop-blur-sm p-6 rounded-3xl shadow-lg border-2 border-coral-pink/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="bg-white-80 backdrop-blur-sm p-6 rounded-3xl shadow-lg border-2 border-coral-pink/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                     <div class="text-center mb-4">
                         <div class="text-4xl mb-2">🍹</div>
                         <h3 class="font-surf text-2xl text-coconut-brown">Tropical Paradise</h3>
@@ -370,7 +395,7 @@
                     </div>
                 </div>
                 
-                <div class="bg-white/80 backdrop-blur-sm p-6 rounded-3xl shadow-lg border-2 border-ocean-blue/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="bg-white-80 backdrop-blur-sm p-6 rounded-3xl shadow-lg border-2 border-ocean-blue/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                     <div class="text-center mb-4">
                         <div class="text-4xl mb-2">🥥</div>
                         <h3 class="font-surf text-2xl text-coconut-brown">Coconut Mojito</h3>
@@ -383,7 +408,7 @@
                     </div>
                 </div>
                 
-                <div class="bg-white/80 backdrop-blur-sm p-6 rounded-3xl shadow-lg border-2 border-pineapple/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="bg-white-80 backdrop-blur-sm p-6 rounded-3xl shadow-lg border-2 border-pineapple/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                     <div class="text-center mb-4">
                         <div class="text-4xl mb-2">🌅</div>
                         <h3 class="font-surf text-2xl text-coconut-brown">Sunset Punch</h3>
@@ -471,9 +496,9 @@
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Featured Gallery Items with Product Photos -->
-                <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3">
+                <div class="group relative bg-white-80 backdrop-blur-sm rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3">
                     <div class="aspect-square overflow-hidden">
-                        <img src="assets/products/caramel.jpg" alt="Caramel Macchiato at Sun Chasers' Cafe" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <img src="assets/products/caramel.jpg" alt="Caramel Macchiato at Sun Chasers' Cafe" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy">
                     </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-coconut-brown/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
@@ -482,9 +507,9 @@
                     </div>
                 </div>
                 
-                <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3">
+                <div class="group relative bg-white-80 backdrop-blur-sm rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3">
                     <div class="aspect-square overflow-hidden">
-                        <img src="assets/products/late.jpg" alt="Iced Latte at Sun Chasers' Cafe" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <img src="assets/products/late.jpg" alt="Iced Latte at Sun Chasers' Cafe" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy">
                     </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-ocean-blue/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
@@ -493,9 +518,9 @@
                     </div>
                 </div>
                 
-                <div class="group relative bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3">
+                <div class="group relative bg-white-80 backdrop-blur-sm rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3">
                     <div class="aspect-square overflow-hidden">
-                        <img src="assets/products/lemon.jpg" alt="Honey Lemon Tea at Sun Chasers' Cafe" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <img src="assets/products/lemon.jpg" alt="Honey Lemon Tea at Sun Chasers' Cafe" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy">
                     </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-pineapple/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
@@ -648,7 +673,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                             <div class="group bg-white/70 p-4 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
                                 <div class="aspect-square rounded-xl overflow-hidden mb-3">
-                                    <img src="assets/products/caramel.jpg" alt="Caramel Macchiato" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                    <img src="assets/products/caramel.jpg" alt="Caramel Macchiato" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
                                 </div>
                                 <h5 class="font-casual text-lg text-coconut-brown text-center">Caramel Macchiato</h5>
                                 <p class="font-handwritten text-xs text-vintage-brown/70 text-center">Sweet & indulgent</p>
@@ -656,7 +681,7 @@
                             
                             <div class="group bg-white/70 p-4 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
                                 <div class="aspect-square rounded-xl overflow-hidden mb-3">
-                                    <img src="assets/products/late.jpg" alt="Iced Latte" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                    <img src="assets/products/late.jpg" alt="Iced Latte" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
                                 </div>
                                 <h5 class="font-casual text-lg text-coconut-brown text-center">Iced Latte</h5>
                                 <p class="font-handwritten text-xs text-vintage-brown/70 text-center">Cool & creamy</p>
@@ -664,7 +689,7 @@
                             
                             <div class="group bg-white/70 p-4 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
                                 <div class="aspect-square rounded-xl overflow-hidden mb-3">
-                                    <img src="assets/products/lemon.jpg" alt="Honey Lemon Tea" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                    <img src="assets/products/lemon.jpg" alt="Honey Lemon Tea" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
                                 </div>
                                 <h5 class="font-casual text-lg text-coconut-brown text-center">Honey Lemon Tea</h5>
                                 <p class="font-handwritten text-xs text-vintage-brown/70 text-center">Refreshing & zesty</p>
