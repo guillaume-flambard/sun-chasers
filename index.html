@@ -42,8 +42,39 @@
     
     <style>
         body {
-            background: linear-gradient(135deg, #FEF7ED 0%, #F5E6D3 100%);
+            background: linear-gradient(135deg, #D2B48C 0%, #DEB887 25%, #F4A460 50%, #CD853F 75%, #D2B48C 100%);
             background-attachment: fixed;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='sandNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' seed='5' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.8 0 0 0 0 0.7 0 0 0 0 0.5 0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23sandNoise)'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            mix-blend-mode: multiply;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='fineGrain'%3E%3CfeTurbulence type='turbulence' baseFrequency='1.2' numOctaves='1' seed='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.9 0 0 0 0 0.8 0 0 0 0 0.6 0 0 0 0.2 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fineGrain)'/%3E%3C/svg%3E");
+            opacity: 0.15;
+            mix-blend-mode: soft-light;
+            pointer-events: none;
+            z-index: 0;
         }
         
         .grainy {
@@ -53,8 +84,43 @@
                 radial-gradient(circle at 50% 100%, rgba(251, 113, 133, 0.1) 0%, transparent 50%);
         }
         
+        .sand-noise {
+            background: 
+                linear-gradient(135deg, #D2B48C 0%, #DEB887 25%, #F4A460 50%, #CD853F 75%, #D2B48C 100%);
+            position: relative;
+        }
+        
+        .sand-noise::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E");
+            opacity: 0.6;
+            mix-blend-mode: multiply;
+            pointer-events: none;
+        }
+        
+        .sand-noise::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter2'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.9' numOctaves='2' seed='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter2)' opacity='0.3'/%3E%3C/svg%3E");
+            opacity: 0.4;
+            mix-blend-mode: overlay;
+            pointer-events: none;
+        }
+        
         .sand-texture {
             position: relative;
+            filter: contrast(1.05) brightness(1.02);
         }
         
         .sand-texture::before {
@@ -64,27 +130,15 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: 
-                radial-gradient(circle at 20% 80%, rgba(245, 230, 211, 0.9) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(245, 230, 211, 0.8) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(234, 179, 8, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 60% 80%, rgba(245, 230, 211, 0.7) 0%, transparent 50%),
-                radial-gradient(circle at 10% 60%, rgba(234, 179, 8, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 90% 70%, rgba(245, 230, 211, 0.6) 0%, transparent 50%);
-            background-size: 
-                300px 300px,
-                500px 500px,
-                200px 200px,
-                400px 400px,
-                150px 150px,
-                350px 350px;
-            background-position: 
-                0 0,
-                100px 100px,
-                200px 50px,
-                50px 200px,
-                300px 150px,
-                150px 300px;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(139, 69, 19, 0.03) 1px, transparent 1px),
+                radial-gradient(circle at 75% 75%, rgba(160, 82, 45, 0.02) 1px, transparent 1px),
+                radial-gradient(circle at 50% 10%, rgba(139, 69, 19, 0.02) 1px, transparent 1px),
+                radial-gradient(circle at 20% 80%, rgba(160, 82, 45, 0.03) 1px, transparent 1px),
+                radial-gradient(circle at 80% 20%, rgba(139, 69, 19, 0.01) 1px, transparent 1px),
+                radial-gradient(circle at 40% 60%, rgba(160, 82, 45, 0.02) 1px, transparent 1px);
+            background-size: 3px 3px, 5px 5px, 2px 2px, 4px 4px, 6px 6px, 3px 3px;
+            background-position: 0 0, 1px 1px, 2px 0, 0 2px, 3px 3px, 1px 2px;
             pointer-events: none;
             z-index: 1;
         }
@@ -95,33 +149,14 @@
         }
         
         .sand-granules {
-            background-image: 
-                radial-gradient(circle at 15% 15%, rgba(245, 230, 211, 0.4) 1px, transparent 1px),
-                radial-gradient(circle at 45% 25%, rgba(234, 179, 8, 0.2) 0.5px, transparent 0.5px),
-                radial-gradient(circle at 75% 35%, rgba(245, 230, 211, 0.3) 0.8px, transparent 0.8px),
-                radial-gradient(circle at 25% 55%, rgba(234, 179, 8, 0.15) 0.3px, transparent 0.3px),
-                radial-gradient(circle at 65% 75%, rgba(245, 230, 211, 0.4) 0.6px, transparent 0.6px),
-                radial-gradient(circle at 85% 85%, rgba(234, 179, 8, 0.1) 0.4px, transparent 0.4px),
-                radial-gradient(circle at 35% 85%, rgba(245, 230, 211, 0.3) 0.7px, transparent 0.7px),
-                radial-gradient(circle at 95% 45%, rgba(234, 179, 8, 0.2) 0.5px, transparent 0.5px);
-            background-size: 
-                50px 50px,
-                30px 30px,
-                40px 40px,
-                25px 25px,
-                35px 35px,
-                20px 20px,
-                45px 45px,
-                28px 28px;
-            background-position: 
-                0 0,
-                10px 15px,
-                25px 5px,
-                40px 30px,
-                15px 40px,
-                35px 20px,
-                5px 35px,
-                50px 10px;
+            background: 
+                radial-gradient(circle at 15% 85%, rgba(139, 69, 19, 0.08) 0.5px, transparent 0.5px),
+                radial-gradient(circle at 85% 15%, rgba(160, 82, 45, 0.06) 0.5px, transparent 0.5px),
+                radial-gradient(circle at 35% 65%, rgba(139, 69, 19, 0.04) 0.5px, transparent 0.5px),
+                radial-gradient(circle at 65% 35%, rgba(160, 82, 45, 0.05) 0.5px, transparent 0.5px),
+                radial-gradient(circle at 25% 45%, rgba(139, 69, 19, 0.03) 0.5px, transparent 0.5px);
+            background-size: 8px 8px, 12px 12px, 6px 6px, 10px 10px, 7px 7px;
+            background-position: 0 0, 3px 3px, 6px 1px, 1px 6px, 4px 4px;
         }
         
         .doodle-sun {
@@ -202,9 +237,9 @@
     </style>
 </head>
 
-<body class="font-handwritten text-vintage-brown grainy sand-granules min-h-screen bg-sandy-texture">
+<body class="font-handwritten text-vintage-brown sand-noise sand-granules min-h-screen relative">
     <!-- Header -->
-    <header class="sticky top-0 z-50 bg-cream/90 backdrop-blur-md border-b-2 border-coconut-brown/20">
+    <header class="sticky top-0 z-50 bg-cream/90 backdrop-blur-md border-b-2 border-coconut-brown/20 relative">
         <nav class="max-w-6xl mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3">
